@@ -16,7 +16,15 @@ public class PlayerMovement : MonoBehaviour {
         {
             transform.Translate(Vector2.up * velo * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.S))
+
+        /*
+         * Need to change
+         * Up will work as is
+         * Side to side and down will only go up down and side to side in world space; not relative to the character
+         * /
+
+
+       /* else if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(Vector2.down * velo * Time.deltaTime);
         }
@@ -27,6 +35,6 @@ public class PlayerMovement : MonoBehaviour {
         else if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector2.left * velo * Time.deltaTime);
-        }
+        }*/
     }
 }
