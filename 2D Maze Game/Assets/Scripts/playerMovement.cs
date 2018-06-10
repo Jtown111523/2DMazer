@@ -1,50 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class playerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {
 
-    Transform player;
+    public float velo = 5f;
 
-    public float speed;
-    
-
-    // Use this for initialization
-    void Start () {
-
-        player = GetComponent<Transform>();
-
+	// Update is called once per frame
+	void Update ()
+    {
+        PlayerMove();
 	}
 
-    // Update is called once per frame
-    
-    public void Update()
+    void PlayerMove()
     {
-        Vector2 playerPos = new Vector2(player.position.x, player.position.y);
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetKey(KeyCode.W))
         {
-            //move player up
-            playerPos.y = playerPos.y + (speed * Time.deltaTime);
+            transform.Translate(Vector2.up * velo * Time.deltaTime);
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (Input.GetKey(KeyCode.S))
         {
-            //move player down
-            playerPos.y = playerPos.y - (speed * Time.deltaTime);
+            transform.Translate(Vector2.down * velo * Time.deltaTime);
         }
-
-        if (Input.GetAxis("Horizontal") > 0)
+        else if (Input.GetKey(KeyCode.D))
         {
-            //move player right
-            playerPos.x = playerPos.x + (speed * Time.deltaTime);
+            transform.Translate(Vector2.right * velo * Time.deltaTime);
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetKey(KeyCode.A))
         {
-            //move player left
-            playerPos.x = playerPos.x - (speed * Time.deltaTime);
+            transform.Translate(Vector2.left * velo * Time.deltaTime);
         }
-
-        Vector2 newPlayerPos = new Vector2(playerPos.x, playerPos.y);
-
-        this.transform.position = newPlayerPos;
     }
 }
