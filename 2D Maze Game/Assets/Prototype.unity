@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ed430b060ad2a4690331bd5ec15a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velo: 5
+  myRid: {fileID: 1672579273}
 --- !u!212 &1672579267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -407,9 +407,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.024192572, y: 0.6814451}
-      - {x: -0.7475178, y: -0.431445}
-      - {x: 0.7354212, y: -0.4193486}
+    - - {x: 0, y: 0.5}
+      - {x: -0.4330127, y: -0.25000003}
+      - {x: 0.43301272, y: -0.24999996}
 --- !u!114 &1672579271
 MonoBehaviour:
   m_ObjectHideFlags: 0

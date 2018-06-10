@@ -2,39 +2,40 @@
 
 public class playerMovement : MonoBehaviour {
 
-    public float velo = 5f;
+    public Rigidbody2D myRid;
+    private float speed = 5;
 
-	// Update is called once per frame
-	void Update ()
+    private void Start()
+    {
+        myRid = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         PlayerMove();
 	}
 
     void PlayerMove()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetAxisRaw("Horizontal") > 0.5f || Input.GetAxisRaw("Horizontal") < -0.5f)
         {
-            transform.Translate(Vector2.up * velo * Time.deltaTime);
+            myRid.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed, myRid.velocity.y);
         }
 
-        /*
-         * Need to change
-         * Up will work as is
-         * Side to side and down will only go up down and side to side in world space; not relative to the character
-         */
-
-
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
         {
-            transform.Translate(Vector2.down * velo * Time.deltaTime);
+            myRid.velocity = new Vector2(myRid.velocity.x, Input.GetAxisRaw("Vertical") * speed);
         }
-        else if (Input.GetKey(KeyCode.D))
+
+        if(Input.GetAxisRaw("Horizontal") < 0.5f && Input.GetAxisRaw("Horizontal") > -0.5f)
         {
-            transform.Translate(Vector2.right * velo * Time.deltaTime);
+            myRid.velocity = new Vector2(0f, myRid.velocity.y);
         }
-        else if (Input.GetKey(KeyCode.A))
+
+        if(Input.GetAxisRaw("Vertical") < 0.5f && Input.GetAxisRaw("Vertical") > -0.5f)
         {
-            transform.Translate(Vector2.left * velo * Time.deltaTime);
+            myRid.velocity = new Vector2(myRid.velocity.x, 0f);
         }
     }
 }
