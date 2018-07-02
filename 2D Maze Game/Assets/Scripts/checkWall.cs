@@ -11,7 +11,7 @@ public class checkWall : MonoBehaviour {
     {
         if(col.gameObject.tag == "wall")
         {
-            Debug.Log("GAMEOVER");
+            //Debug.Log("GAMEOVER");
         }
     }
 }
