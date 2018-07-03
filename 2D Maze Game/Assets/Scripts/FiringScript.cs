@@ -26,7 +26,7 @@ public class FiringScript : MonoBehaviour {
             GameObject bullet = Instantiate(bulletPrefab, spawnLoc, Quaternion.identity);
             bullet.GetComponent<Transform>().rotation = this.gameObject.transform.rotation;
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-            bullet.GetComponent<Rigidbody2D>().velocity = bullet.transform.up * bulletSpeed;
+            bulletRB.velocity = bullet.transform.up * bulletSpeed;
 
 
         }
